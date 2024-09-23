@@ -46,6 +46,7 @@ public class TgsBackendApplication {
 
 			 gerarProdutosPorTemporadaAba1(produtoRepository);
 			 gerarProdutosPorTemporadaAba2(produtoRepository);
+			 gerarProdutosPorTemporadaAba3(produtoRepository);
 		};
 	}
 
@@ -298,6 +299,108 @@ public class TgsBackendApplication {
 		prod9.setPromocao(12.99);
 		prod9.setFoto("https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw1e1a23a6/medium/1001201_1.png");
 		prod9.setSecaoAba("Cafeteria");
+
+		List<Produto> produtos = Arrays.asList(
+				prod1, prod2, prod3, prod4, prod5,
+				prod6, prod7, prod8, prod9, prod10
+		);
+
+		produtoRepository.saveAll(produtos);
+	}
+
+	private void gerarProdutosPorTemporadaAba3(ProdutoRepository produtoRepository) {
+//		NATAL
+		Produto prod2 = new Produto();
+		prod2.setNome("PANETONE LACREME AO LEITE 650G");
+		prod2.setCategoria("Panetones");
+		prod2.setTemporada("Natal");
+		prod2.setValor(89.99);
+		prod2.setPromocao(94.99);
+		prod2.setFoto("https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw98ba4396/medium/1001966_1.png");
+		prod2.setSecaoAba("Marcas");
+
+		Produto prod3 = new Produto();
+		prod3.setNome("Caixa de Trufas laCreme para Presente 225g");
+		prod3.setCategoria("Presentes");
+		prod3.setTemporada("Natal");
+		prod3.setValor(69.99);
+		prod3.setPromocao(74.99);
+		prod3.setFoto("https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw7d7a496e/medium/1000690_1.png");
+		prod3.setSecaoAba("Marcas");
+
+		Produto prod9 = new Produto();
+		prod9.setNome("CAIXA ANGEL PORTA-JOIAS 170G");
+		prod9.setCategoria("Presentes");
+		prod9.setTemporada("Natal");
+		prod9.setValor(69.99);
+		prod9.setPromocao(72.99);
+		prod9.setFoto("https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwe9468896/medium/1003092_1.png");
+		prod9.setSecaoAba("Marcas");
+
+//		DIA DAS CRIANÇAS
+		Produto prod1 = new Produto();
+		prod1.setNome("PELÚCIA CHOCOMONSTRO BARTOLOMEU G");
+		prod1.setCategoria("Brinquedos");
+		prod1.setTemporada("Dia das Crianças");
+		prod1.setValor(249.99);
+		prod1.setPromocao(null);
+		prod1.setFoto("https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwd83f25a4/medium/2002118_1.png");
+		prod1.setSecaoAba("Marcas");
+
+		Produto prod4 = new Produto();
+		prod4.setNome("BULLDOG CHOCOBICHOS ESTIMAÇÃO");
+		prod4.setCategoria("Brinquedos");
+		prod4.setTemporada("Dia das Crianças");
+		prod4.setValor(69.99);
+		prod4.setPromocao(null);
+		prod4.setFoto("https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw43802df6/medium/2002549_1.png");
+		prod4.setSecaoAba("Marcas");
+
+		Produto prod5 = new Produto();
+		prod5.setNome("ELEFANTE CHOCOBICHOS SAFARI");
+		prod5.setCategoria("Brinquedos");
+		prod5.setTemporada("Dia das Crianças");
+		prod5.setValor(69.99);
+		prod5.setPromocao(null);
+		prod5.setFoto("https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw468bc038/medium/2002553_1.png");
+		prod5.setSecaoAba("Marcas");
+
+		Produto prod6 = new Produto();
+		prod6.setNome("JACARE CHOCOBICHOS MATA ATLÂNTICA");
+		prod6.setCategoria("Brinquedos");
+		prod6.setTemporada("Dia das Crianças");
+		prod6.setValor(69.99);
+		prod6.setPromocao(null);
+		prod6.setFoto("https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dw0ec020f9/medium/2002556_2.png");
+		prod6.setSecaoAba("Marcas");
+
+		Produto prod7 = new Produto();
+		prod7.setNome("CACHORRO CHOCOBICHOS FAZENDA");
+		prod7.setCategoria("Brinquedos");
+		prod7.setTemporada("Dia das Crianças");
+		prod7.setValor(69.99);
+		prod7.setPromocao(null);
+		prod7.setFoto("https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwc225141e/medium/2002550_2.png");
+		prod7.setSecaoAba("Marcas");
+
+		Produto prod8 = new Produto();
+		prod8.setNome("GATO CHOCOBICHOS ESTIMAÇÃO");
+		prod8.setCategoria("Brinquedos");
+		prod8.setTemporada("Dia das Crianças");
+		prod8.setValor(69.99);
+		prod8.setPromocao(null);
+		prod8.setFoto("https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwd0a432d5/medium/2002554_2.png");
+		prod8.setSecaoAba("Marcas");
+
+//		FORA DE TEMPORADA
+		Produto prod10 = new Produto();
+		prod10.setNome("CAIXA GOURMET 485G");
+		prod10.setCategoria("Presentes");
+		prod10.setTemporada("Fora de Temporada");
+		prod10.setValor(109.99);
+		prod10.setPromocao(119.99);
+		prod10.setFoto("https://www.cacaushow.com.br/on/demandware.static/-/Sites-masterCatalog_CacauShow/default/dwa5eb7564/medium/1002484_1.png");
+		prod10.setSecaoAba("Marcas");
 
 		List<Produto> produtos = Arrays.asList(
 				prod1, prod2, prod3, prod4, prod5,

@@ -16,9 +16,7 @@ import org.tgs.tgsbackend.service.mapper.NotaFiscalMapper;
 import org.tgs.tgsbackend.service.mapper.ProdutoMapper;
 import org.tgs.tgsbackend.util.MensagemNotaFiscalUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -70,10 +68,10 @@ public class NotaFiscalService {
     }
 
     private List<ProdutoDTO> recomendarProdutos(List<ProdutoDTO> dtoList, String temporada) {
-        List<ProdutoDTO> recomendados = new ArrayList<>();
+        Set<ProdutoDTO> recomendados = new HashSet<>();
 
         if (dtoList == null || dtoList.isEmpty()) {
-            return recomendados;
+            return new ArrayList<>(recomendados);
         }
 
         for (ProdutoDTO produtoComprado : dtoList) {
@@ -84,7 +82,7 @@ public class NotaFiscalService {
             }
         }
 
-        return recomendados;
+        return new ArrayList<>(recomendados);
     }
 
     private List<ProdutoDTO> buscarProdutosPorCategoria(String categoria, String temporada) {

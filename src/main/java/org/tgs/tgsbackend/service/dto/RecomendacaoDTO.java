@@ -40,7 +40,6 @@ public class RecomendacaoDTO {
         messages.put(Month.JUNE, MensagemRecomendacaoUtil.MES_JUNHO);
         messages.put(Month.APRIL, MensagemRecomendacaoUtil.MES_ABRIL);
         messages.put(Month.FEBRUARY, MensagemRecomendacaoUtil.MES_FEVEREIRO);
-        messages.put(Month.JANUARY, MensagemRecomendacaoUtil.MES_FEVEREIRO);
 
         StringBuilder message = new StringBuilder(MensagemRecomendacaoUtil.AGRADECIMENTO);
 
@@ -63,7 +62,6 @@ public class RecomendacaoDTO {
         temporadaMap.put(Month.JUNE, "Festa Junina");
         temporadaMap.put(Month.APRIL, "Páscoa");
         temporadaMap.put(Month.FEBRUARY, "Dia dos Namorados");
-        temporadaMap.put(Month.JANUARY, "Ano Novo");
 
         return temporadaMap.getOrDefault(currentMonth, "Fora de Temporada");
     }

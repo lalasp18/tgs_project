@@ -30,6 +30,11 @@ public class ProdutoController {
         return ResponseEntity.ok().body(service.listarSecaoCafeteria());
     }
 
+    @GetMapping("/secao/marcas")
+    public ResponseEntity<List<ProdutoDTO>> listarMarcas() {
+        return ResponseEntity.ok().body(service.listarSecaoMarcas());
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<ProdutoDTO> buscarPorId(@PathVariable Integer id) {
         return ResponseEntity.ok().body(service.buscarPorId(id));

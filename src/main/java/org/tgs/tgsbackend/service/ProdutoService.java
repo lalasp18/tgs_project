@@ -38,6 +38,10 @@ public class ProdutoService {
         return mapper.toDto(repository.buscarPorSecao("Cafeteria"));
     }
 
+    public List<ProdutoDTO> listarSecaoMarcas() {
+        return mapper.toDto(repository.buscarPorSecao("Marcas"));
+    }
+
     public Produto buscarPorIdEntidade(Integer id) {
         return repository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, MensagemProdutoUtil.NAO_ENCONTRADO));

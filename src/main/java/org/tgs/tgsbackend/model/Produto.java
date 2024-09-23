@@ -31,7 +31,7 @@ public class Produto {
     @Column(name = "valor", nullable = false)
     private Double valor;
 
-    @Column(name = "promocao", nullable = false)
+    @Column(name = "promocao")
     private Double promocao;
 
     @Column(name = "foto", nullable = false)
