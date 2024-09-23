@@ -3,12 +3,13 @@ import {HttpClient, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {NotaFiscal} from "../models/nota-fiscal.models";
 import {RecomendacaoCompra} from "../models/recomendacao-compra.models";
+import {environment} from "../../../environments/environment.prod";
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotaFiscalService {
-  private readonly API = '/api/nota-fiscal';
+  private readonly API = `${environment.apiUrl}api/nota-fiscal`;
 
   constructor(private http: HttpClient) {
   }
