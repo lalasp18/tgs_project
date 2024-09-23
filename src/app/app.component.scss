@@ -15,7 +15,6 @@
 }
 
 :host ::ng-deep {
-
   .p-messages {
     width: fit-content;
     position: fixed;
@@ -24,4 +23,12 @@
     z-index: 11000;
   }
 
+  .p-scrolltop.p-link {
+    background: transparent;
+    border: 1px solid #532e22;
+  }
+
+  .p-scrolltop .p-scrolltop-icon {
+    color: #532e22;
+  }
 }

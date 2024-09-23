@@ -61,19 +61,19 @@
                 <input type="text" pInputText placeholder="Buscar Produto"/>
             </p-iconField>
         </div>
-        <div *ngIf="!estaLogado()" [ngClass]="{'my-responsive-user': isMobile}">
+        <div *ngIf="!estaLogado()">
             <a class="login-info" (click)="efetuarLogin()">
                 <span><i class="pi pi-user" style="font-size: 18px"></i> Entrar</span>
                 <br>
                 <span>null - null Alterar</span>
             </a>
         </div>
-        <div *ngIf="getNameUser()" [ngClass]="{'my-responsive-user': isMobile}">
+        <div *ngIf="getNameUser() && estaLogado()">
             <a class="login-info" (click)="logout()">
                 <span><i class="pi pi-user" style="font-size: 18px"></i> {{ getNameUser() }}</span>
             </a>
         </div>
-        <div *ngIf="estaLogado()" [ngClass]="{'my-responsive-cart': isMobile}">
+        <div *ngIf="estaLogado()">
             <a class="cart" (click)="salvarCompra()">
                 <i class="pi pi-shopping-cart p-text-secondary" pBadge style="font-size: 18px" severity="success"
                    [value]="exibirTotalCarrinho()"></i>
@@ -111,7 +111,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="categoria/nossas-marcas">
                 <img src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dw2e959305/images/link-dia-dos-pais.png" alt="Nossas Marcas">
                 Nossas Marcas
             </a>

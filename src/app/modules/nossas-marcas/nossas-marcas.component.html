@@ -1,20 +1,19 @@
 <div class="tela-choco">
   <div class="converter-ordem">
     <div class="banner">
-      <img src="assets/layout/images/banner-choco.jpg" alt="banner-chocolate">
+      <img src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-siteCatalog_CacauShow/default/dw121092d2/Site_Desktop_Vitrine_Chocolates-Diversos_v1.jpg" alt="banner-chocolate">
     </div>
     <div class="hero">
-      <h1>Chocolate</h1>
-      <p>Chocolate da Cacau Show, já é tudo de bom, agora imagine todos os produtos no mesmo lugar. Isso sim é ser Feliz
-        Hoje! Aproveite agora os chocolates da Cacau Show aqui.</p>
+      <h1>Nossas Marcas</h1>
+      <p>Para todos os gostos, para todos os paladares, a Cacau Show tem os chocolates perfeitos para cada momento do seu dia. Desde aquele doce que remete á infância, passando pela cremosidade do ao leite e até ao poder do intenso. Aqui, temos todos os elementos que irão apaixonar você desde a primeira mordida!</p>
     </div>
   </div>
   <div class="bar-filter">
     <div class="bar-vazio"></div>
     <div class="grid-produtos">
-      <div class="grid-item" *ngFor="let choco of chocolate">
+      <div class="grid-item" *ngFor="let choco of marcas">
         <div class="badge">
-            <i class="pi pi-heart"></i>
+          <i class="pi pi-heart"></i>
         </div>
 
         <img [src]="choco.foto">

@@ -19,7 +19,7 @@
 
         <img [src]="choco.foto">
         <p class="label-produto">{{ choco.nome }}</p>
-        <p class="label-promo">R$ {{ choco.promocao }}</p>
+        <p class="label-promo" *ngIf="choco.promocao != null">R$ {{ choco.promocao }}</p>
         <p class="label-valor">R$ {{ choco.valor }}</p>
         <button *ngIf="estaLogado()" pButton pRipple label="Adicionar ao carrinho" (click)="colocarNoCarrinho(choco)"></button>
       </div>

@@ -14,16 +14,11 @@ export class NotaFiscal {
     this.total = 0;
   }
 
-  adicionarProduto(produto: ProdutoCacau): void {
-    this.produtos.push(produto);
-    this.calcularTotal();
-  }
+}
 
-  definirUser(user: Usuario): void {
-    this.nomeusuario = user;
-  }
-
-  calcularTotal(): void {
-    this.total = this.produtos.reduce((acc, produto) => acc + produto.valor, 0);
-  }
+export interface ProdutoResumo {
+  nome: string;
+  valor: number;
+  quantidade: number;
+  total: number;
 }

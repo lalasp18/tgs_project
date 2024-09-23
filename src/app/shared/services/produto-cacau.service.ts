@@ -20,4 +20,8 @@ export class ProdutoCacauService {
   listarSecaoCafeteria(): Observable<HttpResponse<ProdutoCacau[]>> {
     return this.http.get<ProdutoCacau[]>(`${ this.API }/secao/cafeteria`, {observe: 'response'});
   }
+
+  listarSecaoMarcas(): Observable<HttpResponse<ProdutoCacau[]>> {
+    return this.http.get<ProdutoCacau[]>(`${ this.API }/secao/marcas`, {observe: 'response'});
+  }
 }

@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {DatePipe, DecimalPipe, NgForOf, NgIf} from "@angular/common";
+import {CurrencyPipe, DatePipe, DecimalPipe, NgForOf, NgIf} from "@angular/common";
 import {RecomendacaoCompra} from "../../shared/models/recomendacao-compra.models";
 import {UserAuthService} from "../../_services/user-auth.service";
 import {AlertaService} from "../../shared/services/alerta.service";
 import {ButtonDirective} from "primeng/button";
 import {Ripple} from "primeng/ripple";
 import {ProdutoCacau} from "../../shared/models/produto-cacau.models";
-import {NotaFiscal} from "../../shared/models/nota-fiscal.models";
+import {NotaFiscal, ProdutoResumo} from "../../shared/models/nota-fiscal.models";
 
 @Component({
   selector: 'app-nota-fiscal',
@@ -17,7 +17,8 @@ import {NotaFiscal} from "../../shared/models/nota-fiscal.models";
     NgForOf,
     NgIf,
     Ripple,
-    DecimalPipe
+    DecimalPipe,
+    CurrencyPipe
   ],
   templateUrl: './nota-fiscal.component.html',
   styleUrl: './nota-fiscal.component.scss',
@@ -53,20 +54,39 @@ export class NotaFiscalComponent implements OnInit {
   }
 
   colocarNoCarrinho(choco: ProdutoCacau) {
-    this.listaCompra.adicionarProduto(choco);
-    this.mensagemService.sucesso(choco.nome + " adicionado com sucesso!");
+    this.listaCompra = this.userAuthService.getCompra();
+    this.listaCompra.produtos.push(choco);
+    this.listaCompra.total = this.listaCompra.produtos.reduce((acc, produto) => acc + produto.valor, 0);
+    this.gravarStorage(choco.nome);
+  }
+
+  gravarStorage(nome: string): void {
+    this.mensagemService.sucesso(nome + " adicionado com sucesso!");
     this.userAuthService.setCompra(this.listaCompra);
     this.userAuthService.setQtdCarrinho(this.listaCompra.produtos.length);
   }
 
-  quantidade(produto: string) {
-    return this.recomendacao.compras.produtos.filter(prod => prod.nome === produto).length;
-  }
 
-  total(produto: string) {
-    return this.recomendacao.compras.produtos
-      .filter(prod => prod.nome === produto)
-      .reduce((acc, prod) => acc + prod.valor, 0);
+  calcularResumo(produtos: ProdutoCacau[]): ProdutoResumo[] {
+    const resumo: { [key: string]: ProdutoResumo } = {};
+
+    produtos.forEach(produto => {
+      const chave = `${produto.nome}-${produto.valor}`;
+
+      if (!resumo[chave]) {
+        resumo[chave] = {
+          nome: produto.nome,
+          valor: produto.valor,
+          quantidade: 1,
+          total: produto.valor,
+        };
+      } else {
+        resumo[chave].quantidade++;
+        resumo[chave].total += produto.valor;
+      }
+    });
+
+    return Object.values(resumo);
   }
 
 }

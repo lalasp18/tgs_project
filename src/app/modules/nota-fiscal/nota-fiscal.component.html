@@ -18,16 +18,21 @@
         <b>Nota fiscal</b>
       </th>
     </tr>
+    <tr class="tr-flex">
+      <th colspan="1">Preço</th>
+      <th colspan="1">Quantidade</th>
+      <th colspan="1">Total</th>
+    </tr>
     </thead>
-    <tbody>
-    <ng-container *ngFor="let prod of recomendacao.compras.produtos">
+    <tbody class="tbody-flex">
+    <ng-container *ngFor="let prod of calcularResumo(recomendacao.compras.produtos)">
       <tr class="top">
         <td colspan="3">{{ prod.nome }}</td>
       </tr>
       <tr>
-        <td>R$ {{ total(prod.nome) | number: '1.2-2' }}</td>
-        <td>{{ quantidade(prod.nome) }}</td>
-        <td>R$ {{ total(prod.nome) | number: '1.2-2' }}</td>
+        <td>{{ prod.valor | currency:'BRL':'symbol':'1.2-2' }}</td>
+        <td>{{ prod.quantidade }}</td>
+        <td>{{ prod.total | currency:'BRL':'symbol':'1.2-2' }}</td>
       </tr>
     </ng-container>
     </tbody>
@@ -39,7 +44,7 @@
     </tr>
     <tr class="ttu">
       <td colspan="2">Total</td>
-      <td align="right">R$ {{ recomendacao.compras.total }}</td>
+      <td align="right"><b>{{ recomendacao.compras.total | currency:'BRL':'symbol':'1.2-2' }}</b></td>
     </tr>
     <tr class="sup ttu p--0">
       <td colspan="3">
@@ -48,11 +53,11 @@
     </tr>
     <tr class="ttu">
       <td colspan="2">Total pago</td>
-      <td align="right">R$ {{ recomendacao.compras.total }}</td>
+      <td align="right"><b>{{ recomendacao.compras.total | currency:'BRL':'symbol':'1.2-2' }}</b></td>
     </tr>
     <tr class="sup">
       <td colspan="3" align="center">
-        <b>Pedido:</b>
+        <b>Pedido: {{ recomendacao.compras.id }}</b>
       </td>
     </tr>
     <tr class="sup">
@@ -76,7 +81,7 @@
 
       <img [src]="choco.foto">
       <p class="label-produto">{{ choco.nome }}</p>
-      <p class="label-promo">R$ {{ choco.promocao }}</p>
+      <p class="label-promo" *ngIf="choco.promocao != null">R$ {{ choco.promocao }}</p>
       <p class="label-valor">R$ {{ choco.valor }}</p>
       <button *ngIf="estaLogado()" pButton pRipple label="Adicionar ao carrinho" (click)="colocarNoCarrinho(choco)"></button>
     </div>

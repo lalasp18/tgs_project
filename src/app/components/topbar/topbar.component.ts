@@ -1,9 +1,7 @@
-import {Component, HostListener, Inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SharedModule} from "../../shared/shared-module";
-import {CommonModule, isPlatformBrowser} from "@angular/common";
-import {TopbarCarrinhoService} from "../../shared/services/topbar-carrinho.service";
+import {CommonModule} from "@angular/common";
 import {LogarComponent} from "../logar/logar.component";
-import {ProdutoCacauService} from "../../shared/services/produto-cacau.service";
 import {NotaFiscalService} from "../../shared/services/nota-fiscal.service";
 import {AlertaService} from "../../shared/services/alerta.service";
 import {UserAuthService} from "../../_services/user-auth.service";
@@ -23,20 +21,17 @@ import {Router} from "@angular/router";
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss',
   providers: [
-    TopbarCarrinhoService,
     UserAuthService,
     NotaFiscalService,
     AlertaService
   ]
 })
 export class TopbarComponent implements OnInit {
-  isMobile: boolean = false;
   visivel: boolean = false;
   notaFiscalDaCompra: RecomendacaoCompra | null = null;
   listaCompra: NotaFiscal;
 
   constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
     private userAuthService: UserAuthService,
     private notaFiscalService: NotaFiscalService,
     private mensagemService: AlertaService,
@@ -46,19 +41,6 @@ export class TopbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.checkWindowSize();
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event: Event) {
-    this.checkWindowSize();
-  }
-
-  checkWindowSize() {
-    if (isPlatformBrowser(this.platformId)) {
-      const windowWidth = window.innerWidth;
-      this.isMobile = windowWidth <= 768;
-    }
   }
 
   exibirTotalCarrinho() {
@@ -83,7 +65,7 @@ export class TopbarComponent implements OnInit {
   }
 
   salvarCompra() {
-    if (this.userAuthService.getQtdCarrinho() <= 0) {
+    if (this.userAuthService.getCompra().produtos.length <= 0) {
       return;
     }
 

@@ -1,34 +1,34 @@
 import {Component, OnInit} from '@angular/core';
-import {ProdutoCacauService} from "../../shared/services/produto-cacau.service";
-import {AlertaService} from "../../shared/services/alerta.service";
-import {ProdutoCacau} from "../../shared/models/produto-cacau.models";
-import {NotaFiscal} from "../../shared/models/nota-fiscal.models";
 import {ButtonDirective} from "primeng/button";
+import {MessagesModule} from "primeng/messages";
 import {NgForOf, NgIf} from "@angular/common";
 import {Ripple} from "primeng/ripple";
-import {MessagesModule} from "primeng/messages";
+import {ProdutoCacau} from "../../shared/models/produto-cacau.models";
+import {NotaFiscal} from "../../shared/models/nota-fiscal.models";
+import {ProdutoCacauService} from "../../shared/services/produto-cacau.service";
+import {AlertaService} from "../../shared/services/alerta.service";
 import {UserAuthService} from "../../_services/user-auth.service";
 
 @Component({
-  selector: 'app-cafeteria',
+  selector: 'app-nossas-marcas',
   standalone: true,
-  imports: [
-    ButtonDirective,
-    NgForOf,
-    Ripple,
-    MessagesModule,
-    NgIf
-  ],
-  templateUrl: './cafeteria.component.html',
-  styleUrl: './cafeteria.component.scss',
+    imports: [
+        ButtonDirective,
+        MessagesModule,
+        NgForOf,
+        NgIf,
+        Ripple
+    ],
+  templateUrl: './nossas-marcas.component.html',
+  styleUrl: './nossas-marcas.component.scss',
   providers: [
     ProdutoCacauService,
     AlertaService,
     UserAuthService
   ]
 })
-export class CafeteriaComponent implements OnInit{
-  cafeteria: ProdutoCacau[] = [];
+export class NossasMarcasComponent implements OnInit{
+  marcas: ProdutoCacau[] = [];
   listaCompra: NotaFiscal;
 
   constructor(
@@ -44,9 +44,9 @@ export class CafeteriaComponent implements OnInit{
   }
 
   carregarSecao() {
-    this.service.listarSecaoCafeteria().subscribe({
+    this.service.listarSecaoMarcas().subscribe({
       next: (response) => {
-        this.cafeteria = response.body || [];
+        this.marcas = response.body || [];
       },
       error: (error) => {
         this.mensagemService.erro(error.error?.message);

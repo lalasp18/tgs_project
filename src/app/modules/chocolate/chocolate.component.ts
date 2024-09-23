@@ -5,10 +5,6 @@ import {ProdutoCacauService} from "../../shared/services/produto-cacau.service";
 import {ProdutoCacau} from "../../shared/models/produto-cacau.models";
 import {AlertaService} from "../../shared/services/alerta.service";
 import {NotaFiscal} from "../../shared/models/nota-fiscal.models";
-import {TopbarCarrinhoService} from "../../shared/services/topbar-carrinho.service";
-import {NotaFiscalService} from "../../shared/services/nota-fiscal.service";
-import {RecomendacaoCompra} from "../../shared/models/recomendacao-compra.models";
-import {Usuario} from "../../shared/models/usuario.models";
 import {UserAuthService} from "../../_services/user-auth.service";
 
 @Component({
@@ -22,9 +18,7 @@ import {UserAuthService} from "../../_services/user-auth.service";
   styleUrl: './chocolate.component.scss',
   providers: [
     ProdutoCacauService,
-    NotaFiscalService,
     AlertaService,
-    TopbarCarrinhoService,
     UserAuthService
   ]
 })
@@ -56,8 +50,14 @@ export class ChocolateComponent implements OnInit{
   }
 
   colocarNoCarrinho(choco: ProdutoCacau) {
-    this.listaCompra.adicionarProduto(choco);
-    this.mensagemService.sucesso(choco.nome + " adicionado com sucesso!");
+    this.listaCompra = this.userAuthService.getCompra();
+    this.listaCompra.produtos.push(choco);
+    this.listaCompra.total = this.listaCompra.produtos.reduce((acc, produto) => acc + produto.valor, 0);
+    this.gravarStorage(choco.nome);
+  }
+
+  gravarStorage(nome: string): void {
+    this.mensagemService.sucesso(nome + " adicionado com sucesso!");
     this.userAuthService.setCompra(this.listaCompra);
     this.userAuthService.setQtdCarrinho(this.listaCompra.produtos.length);
   }
