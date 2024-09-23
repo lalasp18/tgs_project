@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.tgs.tgsbackend.model.Produto;
 import org.tgs.tgsbackend.model.Usuario;
-import org.tgs.tgsbackend.repository.NotaFiscalRepository;
 import org.tgs.tgsbackend.repository.ProdutoRepository;
 import org.tgs.tgsbackend.repository.UsuarioRepository;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

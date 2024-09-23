@@ -16,5 +16,4 @@ public class UsuarioDTO {
 
     private String nome;
 
-    private List<NotaFiscalDTO> compras = new ArrayList<>();
 }

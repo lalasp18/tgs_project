@@ -10,12 +10,12 @@ public interface NotaFiscalMapper extends EntityMapper<NotaFiscalDTO, NotaFiscal
 
     @Override
     @Mapping(source = "id", target = "id")
-    @Mapping(source = "nomeusuario", target = "user.nome")
+    @Mapping(source = "nomeusuario.nome", target = "user.nome")
     NotaFiscal toEntity(NotaFiscalDTO dto);
 
     @Override
     @Mapping(source = "id", target = "id")
-    @Mapping(source = "user.nome", target = "nomeusuario")
+    @Mapping(source = "user.nome", target = "nomeusuario.nome")
     NotaFiscalDTO toDto(NotaFiscal entity);
 
 }

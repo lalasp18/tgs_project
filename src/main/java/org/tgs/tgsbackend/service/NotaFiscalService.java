@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import org.tgs.tgsbackend.model.NotaFiscal;
+import org.tgs.tgsbackend.model.Usuario;
 import org.tgs.tgsbackend.repository.NotaFiscalRepository;
 import org.tgs.tgsbackend.repository.ProdutoRepository;
 import org.tgs.tgsbackend.service.dto.NotaFiscalDTO;
@@ -29,6 +30,7 @@ public class NotaFiscalService {
     private final ProdutoRepository produtoRepository;
     private final NotaFiscalMapper mapper;
     private final ProdutoMapper produtoMapper;
+    private final UsuarioService userService;
 
     public List<NotaFiscal> listarEntidades() {
         return repository.findAll();
@@ -48,12 +50,16 @@ public class NotaFiscalService {
     }
 
     public RecomendacaoDTO salvar(NotaFiscalDTO dto) {
-        if(Objects.nonNull(dto.getId())) {
-            NotaFiscal entity = repository.save(mapper.toEntity(dto));
-            return recomendacaoClienteProdutos(mapper.toDto(entity));
-        } else {
-            return recomendacaoClienteProdutos(mapper.toDto(repository.save(mapper.toEntity(dto))));
-        }
+        String user = dto.getNomeusuario().getNome();
+        dto.setNomeusuario(userService.buscarPorNome(user));
+
+        NotaFiscal entity = mapper.toEntity(dto);
+        Usuario usuario = userService.buscarPorNomeEntidade(user);
+        entity.setUser(usuario);
+        entity = repository.save(entity);
+
+        RecomendacaoDTO dtoSalvo = recomendacaoClienteProdutos(mapper.toDto(entity));
+            return dtoSalvo;
     }
 
     public RecomendacaoDTO recomendacaoClienteProdutos(NotaFiscalDTO dto) {
@@ -66,21 +72,23 @@ public class NotaFiscalService {
     private List<ProdutoDTO> recomendarProdutos(List<ProdutoDTO> dtoList, String temporada) {
         List<ProdutoDTO> recomendados = new ArrayList<>();
 
+        if (dtoList == null || dtoList.isEmpty()) {
+            return recomendados;
+        }
+
         for (ProdutoDTO produtoComprado : dtoList) {
             List<ProdutoDTO> produtosDaMesmaCategoria = buscarProdutosPorCategoria(produtoComprado.getCategoria(), temporada);
 
-            List<ProdutoDTO> produtosFiltrados = produtosDaMesmaCategoria.stream()
-                    .filter(produto -> !dtoList.contains(produto))
-                    .collect(Collectors.toList());
-
-            recomendados.addAll(produtosFiltrados);
+            if (produtosDaMesmaCategoria != null) {
+                recomendados.addAll(produtosDaMesmaCategoria);
+            }
         }
 
-        return recomendados.stream().distinct().collect(Collectors.toList());
+        return recomendados;
     }
 
     private List<ProdutoDTO> buscarProdutosPorCategoria(String categoria, String temporada) {
-        List<ProdutoDTO> dtoList = produtoMapper.toDto(produtoRepository.findAllByCategoriaAndTemporada(categoria, temporada));
+        List<ProdutoDTO> dtoList = produtoMapper.toDto(produtoRepository.buscarRecomendacao(categoria, temporada));
 
         return dtoList;
     }

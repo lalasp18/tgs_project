@@ -11,7 +11,8 @@ import java.util.List;
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 
-    List<Produto> findAllByCategoriaAndTemporada(String categoria, String temporada);
+    @Query("SELECT p FROM Produto p WHERE p.categoria = :categoria OR p.temporada = :temporada")
+    List<Produto> buscarRecomendacao(String categoria, String temporada);
 
     @Query("SELECT p FROM Produto p WHERE p.secaoAba = :secao")
     List<Produto> buscarPorSecao(@Param("secao") String secao);
