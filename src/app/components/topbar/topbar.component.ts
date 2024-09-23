@@ -18,6 +18,7 @@ import {LogarComponent} from "../logar/logar.component";
 export class TopbarComponent implements OnInit {
   isMobile: boolean = false;
   valueCarrinho: number = 0;
+  visivel: boolean = false;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
