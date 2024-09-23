@@ -9,7 +9,7 @@ import {environment} from "../../../environments/environment.prod";
   providedIn: 'root'
 })
 export class NotaFiscalService {
-  private readonly API = `${environment.apiUrl}api/nota-fiscal`;
+  private readonly API = '/api/nota-fiscal';
 
   constructor(private http: HttpClient) {
   }

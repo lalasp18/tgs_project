@@ -8,6 +8,8 @@ import {NotaFiscal} from "../../shared/models/nota-fiscal.models";
 import {TopbarCarrinhoService} from "../../shared/services/topbar-carrinho.service";
 import {NotaFiscalService} from "../../shared/services/nota-fiscal.service";
 import {RecomendacaoCompra} from "../../shared/models/recomendacao-compra.models";
+import {Usuario} from "../../shared/models/usuario.models";
+import {UserAuthService} from "../../_services/user-auth.service";
 
 @Component({
   selector: 'app-chocolate',
@@ -17,25 +19,29 @@ import {RecomendacaoCompra} from "../../shared/models/recomendacao-compra.models
     SharedModule,
   ],
   templateUrl: './chocolate.component.html',
-  styleUrl: './chocolate.component.scss'
+  styleUrl: './chocolate.component.scss',
+  providers: [
+    ProdutoCacauService,
+    NotaFiscalService,
+    AlertaService,
+    TopbarCarrinhoService,
+    UserAuthService
+  ]
 })
 export class ChocolateComponent implements OnInit{
   chocolate: ProdutoCacau[] = [];
-  listaCompra!: NotaFiscal;
-  comprou: boolean = false;
-  notaFiscalDaCompra: RecomendacaoCompra | null = null;
+  listaCompra: NotaFiscal;
 
   constructor(
     private service: ProdutoCacauService,
-    private notaFiscalService: NotaFiscalService,
     private mensagemService: AlertaService,
-    private topService: TopbarCarrinhoService,
+    private userAuthService: UserAuthService,
   ) {
+    this.listaCompra = new NotaFiscal();
   }
 
   ngOnInit() {
     this.carregarSecao();
-    this.verificarEstadoCompra();
   }
 
   carregarSecao() {
@@ -50,26 +56,14 @@ export class ChocolateComponent implements OnInit{
   }
 
   colocarNoCarrinho(choco: ProdutoCacau) {
-    this.listaCompra.produtos.push(choco);
+    this.listaCompra.adicionarProduto(choco);
     this.mensagemService.sucesso(choco.nome + " adicionado com sucesso!");
-    this.topService.atualizarQuantia(this.listaCompra.produtos.length);
+    this.userAuthService.setCompra(this.listaCompra);
+    this.userAuthService.setQtdCarrinho(this.listaCompra.produtos.length);
   }
 
-  verificarEstadoCompra() {
-    this.topService.eventoClick.subscribe(value => {
-      this.comprou = value;
-      if (this.comprou) this.salvarCompra();
-    });
-  }
-
-  salvarCompra() {
-    this.notaFiscalService.listaDeCompras(this.listaCompra).subscribe({
-      next: (response) => {
-        this.notaFiscalDaCompra = response.body;
-      },
-      error: (error) => {
-        this.mensagemService.erro(error.error?.message);
-      }
-    });
+  estaLogado() {
+    const loggedIn = this.userAuthService.isLoggedIn();
+    return loggedIn != '';
   }
 }

@@ -60,18 +60,6 @@ $text-color: #d8cfc7;
         top: 10px;
         width: 1px;
       }
-
-      .cart {
-        img {
-          width: 20px;
-          margin-right: 5px;
-        }
-
-        span {
-          color: $secondary-color;
-          font-weight: bold;
-        }
-      }
     }
   }
 
@@ -98,6 +86,7 @@ $text-color: #d8cfc7;
     }
 
     .login-info {
+      cursor: pointer;
       margin-right: auto;
       display: inline-block;
       position: relative;
@@ -120,6 +109,23 @@ $text-color: #d8cfc7;
     .login-info:hover::after {
       left: 0;
       width: 100%;
+    }
+
+    div.not-show {
+      display: none;
+    }
+
+    .cart {
+      cursor: pointer;
+      img {
+        width: 20px;
+        margin-right: 5px;
+      }
+
+      span {
+        color: $secondary-color;
+        font-weight: bold;
+      }
     }
   }
 
@@ -234,7 +240,7 @@ $text-color: #d8cfc7;
 
       .my-responsive-cart {
         position: absolute;
-        right: 1.5rem;
+        right: 2rem;
         top: 3rem;
       }
 

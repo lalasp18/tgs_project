@@ -10,7 +10,8 @@ import {SharedModule} from "../../shared/shared-module";
     SharedModule,
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
+  host: { ngSkipHydration: 'true' }
 })
 export class HomeComponent implements OnInit {
   slides = [
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
       name: 'Promoção Wafers',
       path: 'assets/layout/images/banner-home-wafers.jpg',
     }
-  ]
+  ];
 
   ngOnInit() {
   }

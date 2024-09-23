@@ -14,6 +14,7 @@ export class AlertaService {
       severity: "success",
       summary: "Sucesso",
       detail: mensagem,
+      life: 3000,
     });
   }
 
@@ -22,6 +23,7 @@ export class AlertaService {
       severity: "error",
       summary: "Erro",
       detail: mensagem,
+      life: 3000,
     });
   }
 
@@ -30,24 +32,8 @@ export class AlertaService {
       severity: "warn",
       summary: "Atenção",
       detail: mensagem,
+      life: 3000,
     });
   }
 
-  public confirmarExclusao(action: () => void) {
-    this.confirmationService.confirm({
-      message: "Você deseja excluir esse registro?",
-      header: "Confirmar Exclusão",
-      icon: "pi pi-info-circle",
-      acceptButtonStyleClass: "p-button-danger p-button-text",
-      rejectButtonStyleClass: "p-button-text p-button-text",
-      acceptIcon: "none",
-      rejectIcon: "none",
-      acceptLabel: "Sim",
-      rejectLabel: "Não",
-
-      accept: () => {
-        action();
-      },
-    });
-  }
 }

@@ -1,1 +1,30 @@
-<p>cafeteria works!</p>
+<div class="tela-choco">
+  <div class="converter-ordem">
+    <div class="banner">
+      <img src="assets/layout/images/banner-choco.jpg" alt="banner-chocolate">
+    </div>
+    <div class="hero">
+      <h1>Chocolate</h1>
+      <p>Chocolate da Cacau Show, já é tudo de bom, agora imagine todos os produtos no mesmo lugar. Isso sim é ser Feliz
+        Hoje! Aproveite agora os chocolates da Cacau Show aqui.</p>
+    </div>
+  </div>
+  <div class="bar-filter">
+    <div class="bar-vazio"></div>
+    <div class="grid-produtos">
+      <div class="grid-item" *ngFor="let choco of cafeteria">
+        <div class="badge">
+          <i class="pi pi-heart"></i>
+        </div>
+
+        <img [src]="choco.foto">
+        <p class="label-produto">{{ choco.nome }}</p>
+        <p class="label-promo">R$ {{ choco.promocao }}</p>
+        <p class="label-valor">R$ {{ choco.valor }}</p>
+        <button *ngIf="estaLogado()" pButton pRipple label="Adicionar ao carrinho" (click)="colocarNoCarrinho(choco)"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-messages />

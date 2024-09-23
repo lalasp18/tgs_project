@@ -8,7 +8,7 @@ import {environment} from "../../../environments/environment.prod";
   providedIn: 'root'
 })
 export class ProdutoCacauService {
-  private readonly API = `${environment.apiUrl}api/produtos`;
+  private readonly API = '/api/produtos';
 
   constructor(private http: HttpClient) {
   }

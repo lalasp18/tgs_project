@@ -39,6 +39,7 @@ $line-color: #7ea077;
   .bar-filter {
     padding: 0 4%;
     display: flex;
+    justify-content: center;
 
     .bar-vazio {
       width: 25%;
@@ -51,13 +52,13 @@ $line-color: #7ea077;
 
       .grid-item {
         background: transparent;
-        padding: 36px 6px 30px;
-        color: $text-color;
+        padding: 36px 2rem 30px;
+        color: #1f1f1f;
         display: flex;
         flex-direction: column;
         align-items: center;
         position: relative;
-        width: 18.335rem;
+        width: 15.335rem;
 
         .badge {
           position: absolute;

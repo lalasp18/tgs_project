@@ -1,0 +1,84 @@
+<div class="nota-ticket">
+  <table class="printer-ticket">
+    <thead>
+    <tr>
+      <th class="title" colspan="3">Cacau Show</th>
+    </tr>
+    <tr>
+      <th colspan="3">{{ diaAtual | date : 'dd/MM/yyyy' }} - {{ diaAtual | date:'HH:mm:ss' }}</th>
+    </tr>
+    <tr>
+      <th colspan="3">
+        Nome do cliente <br/>
+        {{ recomendacao.compras.nomeusuario?.nome }}
+      </th>
+    </tr>
+    <tr>
+      <th class="ttu" colspan="3">
+        <b>Nota fiscal</b>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let prod of recomendacao.compras.produtos">
+      <tr class="top">
+        <td colspan="3">{{ prod.nome }}</td>
+      </tr>
+      <tr>
+        <td>R$ {{ total(prod.nome) | number: '1.2-2' }}</td>
+        <td>{{ quantidade(prod.nome) }}</td>
+        <td>R$ {{ total(prod.nome) | number: '1.2-2' }}</td>
+      </tr>
+    </ng-container>
+    </tbody>
+    <tfoot>
+    <tr class="sup ttu p--0">
+      <td colspan="3">
+        <b>Totais</b>
+      </td>
+    </tr>
+    <tr class="ttu">
+      <td colspan="2">Total</td>
+      <td align="right">R$ {{ recomendacao.compras.total }}</td>
+    </tr>
+    <tr class="sup ttu p--0">
+      <td colspan="3">
+        <b>Pagamentos</b>
+      </td>
+    </tr>
+    <tr class="ttu">
+      <td colspan="2">Total pago</td>
+      <td align="right">R$ {{ recomendacao.compras.total }}</td>
+    </tr>
+    <tr class="sup">
+      <td colspan="3" align="center">
+        <b>Pedido:</b>
+      </td>
+    </tr>
+    <tr class="sup">
+      <td colspan="3" align="center">
+        www.cacaushow.com.br
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+</div>
+
+
+<div class="lista-recomenda">
+  <h2>{{ recomendacao.mensagemMarketing }}</h2>
+
+  <div class="grid-produtos">
+    <div class="grid-item" *ngFor="let choco of recomendacao.produtosRecomendados">
+      <div class="badge">
+        <i class="pi pi-heart"></i>
+      </div>
+
+      <img [src]="choco.foto">
+      <p class="label-produto">{{ choco.nome }}</p>
+      <p class="label-promo">R$ {{ choco.promocao }}</p>
+      <p class="label-valor">R$ {{ choco.valor }}</p>
+      <button *ngIf="estaLogado()" pButton pRipple label="Adicionar ao carrinho" (click)="colocarNoCarrinho(choco)"></button>
+    </div>
+  </div>
+</div>

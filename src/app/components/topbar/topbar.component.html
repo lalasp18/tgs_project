@@ -61,17 +61,22 @@
                 <input type="text" pInputText placeholder="Buscar Produto"/>
             </p-iconField>
         </div>
-        <div [ngClass]="{'my-responsive-user': isMobile}">
-            <a href="#" class="login-info">
+        <div *ngIf="!estaLogado()" [ngClass]="{'my-responsive-user': isMobile}">
+            <a class="login-info" (click)="efetuarLogin()">
                 <span><i class="pi pi-user" style="font-size: 18px"></i> Entrar</span>
                 <br>
                 <span>null - null Alterar</span>
             </a>
         </div>
-        <div [ngClass]="{'my-responsive-cart': isMobile}">
-            <a class="cart" (click)="efetuarCompra()">
+        <div *ngIf="getNameUser()" [ngClass]="{'my-responsive-user': isMobile}">
+            <a class="login-info" (click)="logout()">
+                <span><i class="pi pi-user" style="font-size: 18px"></i> {{ getNameUser() }}</span>
+            </a>
+        </div>
+        <div *ngIf="estaLogado()" [ngClass]="{'my-responsive-cart': isMobile}">
+            <a class="cart" (click)="salvarCompra()">
                 <i class="pi pi-shopping-cart p-text-secondary" pBadge style="font-size: 18px" severity="success"
-                   [value]="valueCarrinho"></i>
+                   [value]="exibirTotalCarrinho()"></i>
             </a>
         </div>
     </div>

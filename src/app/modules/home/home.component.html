@@ -5,9 +5,9 @@
     [numScroll]="1"
     [circular]="true"
     autoplayInterval="3000">
-    <ng-template let-slide pTemplate="item">
+    <ng-template let-imagem pTemplate="item">
       <div class="carousel-item">
-        <img [src]="slide.path" [alt]="slide.name"/>
+        <img [src]="imagem.path" [alt]="imagem.name"/>
       </div>
     </ng-template>
   </p-carousel>

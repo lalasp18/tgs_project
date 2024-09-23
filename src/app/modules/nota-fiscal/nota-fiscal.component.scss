@@ -1,0 +1,150 @@
+$color-gray: #BCBCBC;
+$choco-color: #6b2e0f;
+$border-color: #532e22;
+$terciario-color: #659c57;
+$text-color: #1f1f1f;
+$promo-color: #88716b;
+$line-color: #7ea077;
+
+.text {
+  &-center { text-align: center; }
+}
+.ttu { text-transform: uppercase; }
+
+.nota-ticket {
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.printer-ticket {
+  display: table !important;
+  width: 100%;
+  max-width: 400px;
+  font-weight: lighter;
+  line-height: 1.3em;
+  $printer-padding-base: 10px;
+  &, & * {
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 10px;
+  }
+
+  th:nth-child(2),
+  td:nth-child(2) {
+    width: 50px;
+  }
+
+  th:nth-child(3) ,
+  td:nth-child(3) {
+    width: 90px; text-align: right;
+  }
+
+  th {
+    font-weight: inherit;
+    padding: $printer-padding-base 0;
+    text-align: center;
+    border-bottom: 1px dashed $color-gray;
+  }
+  tbody {
+    tr:last-child td { padding-bottom: $printer-padding-base; }
+  }
+  tfoot {
+    .sup td {
+      padding: $printer-padding-base 0;
+      border-top: 1px dashed $color-gray;
+    }
+    .sup.p--0 td { padding-bottom: 0; }
+  }
+
+  .title { font-size: 1.5em; padding: $printer-padding-base*1.5 0; }
+  .top {
+    td { padding-top: $printer-padding-base; }
+  }
+  .last td { padding-bottom: $printer-padding-base; }
+}
+
+.lista-recomenda {
+  h2 {
+    text-align: center;
+  }
+
+  .grid-produtos {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .grid-item {
+      background: transparent;
+      padding: 36px 2rem 30px;
+      color: #1f1f1f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      width: 15.335rem;
+
+      .badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        background-color: transparent;
+        border-radius: 50%;
+        color: $text-color;
+        border: .5px solid $line-color;
+
+        i.pi.pi-heart {
+          vertical-align: middle;
+        }
+      }
+
+      img {
+        display: inline-block;
+        max-height: 200px;
+        max-width: 100%;
+        text-align: center;
+        width: auto;
+      }
+
+      .label-produto {
+        text-transform: uppercase;
+      }
+
+      .label-promo {
+        text-decoration: line-through;
+        color: $promo-color;
+        font-style: italic;
+        margin-bottom: 0;
+        line-height: 0;
+      }
+
+      .label-valor {
+        font-family: 'Quicksand Bold', 'Roboto', sans-serif;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      button {
+        font-family: 'Quicksand', 'Roboto', sans-serif;
+        border: 1px solid $border-color;
+        font-size: .875em;
+        outline: none;
+        background: transparent;
+        color: $text-color;
+        min-width: 115px;
+      }
+    }
+
+    .grid-item:after {
+      content: "";
+      border-right: 1px dashed $line-color;
+      height: 80%;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+    }
+  }
+}

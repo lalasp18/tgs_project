@@ -21,8 +21,10 @@
         <p class="label-produto">{{ choco.nome }}</p>
         <p class="label-promo">R$ {{ choco.promocao }}</p>
         <p class="label-valor">R$ {{ choco.valor }}</p>
-        <button pButton pRipple label="Adicionar ao carrinho" (click)="colocarNoCarrinho(choco)"></button>
+        <button *ngIf="estaLogado()" pButton pRipple label="Adicionar ao carrinho" (click)="colocarNoCarrinho(choco)"></button>
       </div>
     </div>
   </div>
 </div>
+
+<p-messages />

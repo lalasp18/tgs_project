@@ -11,6 +11,7 @@ import {TopbarComponent} from "./components/topbar/topbar.component";
   imports: [
     RouterOutlet,
     CommonModule,
+    SharedModule,
     TopbarComponent
   ],
   templateUrl: './app.component.html',

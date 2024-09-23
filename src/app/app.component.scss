@@ -15,20 +15,13 @@
 }
 
 :host ::ng-deep {
-  //.p-datatable.p-component {
-  //  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  //}
-  //.p-datatable-wrapper td.action-column .spacing-button:not(:last-child) {
-  //  margin-right: 10px;
-  //}
-  //.p-datatable-wrapper th.btn-list-historico {
-  //  width: 8rem;
-  //}
-  //.p-button-rounded.p-button-danger .p-button {
-  //  background: #D32F2F;
-  //}
-  //button.p-button.p-component.p-button-icon-only.p-button-text.p-button-rounded.p-button-plain.p-ripple:focus {
-  //  background: #fa7f77;
-  //}
+
+  .p-messages {
+    width: fit-content;
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 11000;
+  }
 
 }
