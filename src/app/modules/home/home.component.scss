@@ -1,0 +1,59 @@
+// Variáveis de cores
+$primary-color: #4a2e1b;
+$secondary-color: #f7c97f;
+$bg-color: #f4ede3;
+$accent-color: #d9534f;
+
+.carousel {
+  //width: 100%;
+  padding: 3em 4.0625em;
+
+  .carousel-item img {
+    width: 100%;
+  }
+}
+
+h2 {
+  padding: 3rem 0;
+}
+
+:host ::ng-deep {
+  button.p-ripple.p-element.p-carousel-next.p-link, button.p-ripple.p-element.p-carousel-prev.p-link {
+    background-color: #fff;
+    border: 1px solid #e5dfd4;
+    border-radius: 6px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+    z-index: 1;
+  }
+
+  button.p-ripple.p-element.p-carousel-next.p-link {
+    margin: 0.5rem 1rem .5rem -1rem;
+  }
+
+  button.p-ripple.p-element.p-carousel-prev.p-link {
+    margin: 0.5rem -1rem .5rem 1rem;
+  }
+
+  ul.p-carousel-indicators.p-reset {
+    display: none;
+  }
+
+  .p-carousel-content {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 992px) {
+  .carousel {
+    padding: 0;
+
+    .carousel-item img {
+      height: 33.954375rem;
+      object-fit: cover;
+    }
+  }
+
+  h2 {
+    padding: 0;
+  }
+}

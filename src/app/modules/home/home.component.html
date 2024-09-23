@@ -1,0 +1,16 @@
+<div class="carousel">
+  <p-carousel
+    [value]="slides"
+    [numVisible]="1"
+    [numScroll]="1"
+    [circular]="true"
+    autoplayInterval="3000">
+    <ng-template let-slide pTemplate="item">
+      <div class="carousel-item">
+        <img [src]="slide.path" [alt]="slide.name"/>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+
+<h2>Os melhores momentos são aqui, na Cacau Show!</h2>

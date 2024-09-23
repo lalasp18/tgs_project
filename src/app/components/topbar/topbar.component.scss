@@ -1,0 +1,285 @@
+// Variáveis de cores
+$primary-color: #352727;
+$secondary-color: #f7c97f;
+$bg-color: #f4ede3;
+$accent-color: #d9534f;
+$top-color: #020000;
+$badge-color: #b6d66d;
+$icon-color: #659c57;
+$user-color: #659c57;
+$text-color: #d8cfc7;
+
+.navbar {
+  color: white;
+
+  &-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    background-color: $top-color;
+    height: 2.8125rem;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+      position: relative;
+
+      li {
+        position: relative;
+
+        a {
+          color: $text-color;
+          font-size: .625em;
+          height: 100%;
+          padding: .75em 2.25em;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .span-icon img {
+            height: 18px;
+            width: 18px;
+          }
+
+          .span-text {
+            margin-left: 10px;
+            line-height: 1rem;
+          }
+        }
+      }
+
+      li:after {
+        content: "";
+        background-color: #7ea077;
+        height: 25px;
+        position: absolute;
+        right: 0;
+        top: 10px;
+        width: 1px;
+      }
+
+      .cart {
+        img {
+          width: 20px;
+          margin-right: 5px;
+        }
+
+        span {
+          color: $secondary-color;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  &-brand {
+    background-image: url('/assets/layout/images/background-menu.jpg');
+    background-size: cover;
+    background-color: #0D0604;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    height: 6.09375rem;
+
+    img {
+      max-width: 150px;
+    }
+
+    input[type='text'] {
+      background-color: #e5dfd4;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid $primary-color;
+      width: 40rem;
+    }
+
+    .login-info {
+      margin-right: auto;
+      display: inline-block;
+      position: relative;
+      text-decoration: none;
+      color: #fff;
+      line-height: 1.25em;
+    }
+
+    .login-info::after {
+      content: "";
+      position: absolute;
+      left: 2em;
+      bottom: 0;
+      width: 50%;
+      height: 1px;
+      background-color: $user-color;
+      transition: all 0.3s ease;
+    }
+
+    .login-info:hover::after {
+      left: 0;
+      width: 100%;
+    }
+  }
+
+}
+
+.main-menu {
+  background-color: $primary-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  flex-wrap: wrap;
+  //height: 3.1875rem;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    position: relative;
+
+    li {
+      position: relative;
+
+      a {
+        color: $text-color;
+        font-size: 15px;
+        height: 100%;
+        padding: 13px 25px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    li:after {
+      content: "";
+      background-color: #7ea077;
+      height: 25px;
+      position: absolute;
+      right: 0;
+      top: 10px;
+      width: 1px;
+    }
+  }
+}
+
+
+:host ::ng-deep {
+  i.p-element.pi.pi-shopping-cart.p-text-secondary.p-overlay-badge {
+    color: $icon-color;
+  }
+
+  .p-badge {
+    font-size: .8125em;
+    min-width: 1.25em;
+    height: 1.25em;
+    line-height: 1.25em;
+  }
+
+  .p-badge.p-badge-success {
+    background-color: $badge-color;
+  }
+
+  i.pi.pi-user {
+    color: $user-color;
+  }
+
+  span.p-input-icon.pi.pi-search {
+    color: #352727;
+  }
+
+  p-iconfield {
+    width: 50%;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar-brand {
+    div:has(input[type='text']) {
+      display: none;
+    }
+  }
+
+  .main-menu ul {
+    height: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    &-top {
+      display: none;
+    }
+
+    &-brand {
+      flex-direction: column;
+      padding: .5rem;
+
+      div:has(input[type='text']) {
+        display: contents;
+
+        input[type='text'] {
+          width: 100%;
+        }
+      }
+
+      .my-responsive-cart {
+        position: absolute;
+        right: 1.5rem;
+        top: 3rem;
+      }
+
+      .my-responsive-user {
+        position: absolute;
+        left: 1rem;
+        top: 2rem;
+      }
+    }
+
+    :host ::ng-deep {
+      p-iconfield {
+        width: 50%;
+      }
+    }
+  }
+
+  .main-menu {
+    ul {
+      justify-content: left;
+      height: fit-content;
+      margin: 0;
+      flex-wrap: wrap;
+      a {
+        margin: 5px 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-brand img {
+    max-width: 100px;
+  }
+
+  .main-menu {
+    ul {
+      justify-content: left;
+      height: fit-content;
+      margin: 0;
+      flex-wrap: wrap;
+
+      a {
+        font-size: 12px;
+      }
+    }
+  }
+}

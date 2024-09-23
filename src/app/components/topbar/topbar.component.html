@@ -1,0 +1,131 @@
+<div class="navbar">
+    <div class="navbar-top">
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="span-text">Seja um <br> Revendedor</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="span-icon"><img src="assets/layout/images/loja.png"></span>
+                    <span class="span-text">Seja um <br> Franqueado</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="span-icon"><img src="assets/layout/images/loja.png"></span>
+                    <span class="span-text">Área para <br> Empresas</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="span-icon"><img src="assets/layout/images/loja.png"></span>
+                    <span class="span-text">Vale <br> Presente</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="span-icon"><img src="assets/layout/images/loja.png"></span>
+                    <span class="span-text">Trabalhe <br> Conosco</span>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="span-icon"><img src="assets/layout/images/loja.png"></span>
+                    <span class="span-text">Encontre <br> uma loja</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="span-icon"><img
+                            src="https://www.cacaushow.com.br/on/demandware.static/-/Sites-CacauShow-Library/default/dw0bd1636d/images/svg/Lover_Moeda_Branca.png"></span>
+                    <span class="span-text">Cacau <br> Lovers</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-brand">
+        <div>
+          <a href="">
+            <img
+            src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dw7c0a601a/svg/logo_cacau_show.svg"
+            alt="Cacau Show Logo"/>
+          </a>
+        </div>
+        <div>
+            <p-iconField iconPosition="right">
+                <p-inputIcon styleClass="pi pi-search"/>
+                <input type="text" pInputText placeholder="Buscar Produto"/>
+            </p-iconField>
+        </div>
+        <div [ngClass]="{'my-responsive-user': isMobile}">
+            <a href="#" class="login-info">
+                <span><i class="pi pi-user" style="font-size: 18px"></i> Entrar</span>
+                <br>
+                <span>null - null Alterar</span>
+            </a>
+        </div>
+        <div [ngClass]="{'my-responsive-cart': isMobile}">
+            <a class="cart" (click)="efetuarCompra()">
+                <i class="pi pi-shopping-cart p-text-secondary" pBadge style="font-size: 18px" severity="success"
+                   [value]="valueCarrinho"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+<nav class="main-menu">
+    <ul>
+        <li>
+            <a href="categoria/chocolate">
+                <img src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dwf9111eec/svg/icon-menu-paravoce.svg" alt="Chocolate">
+                Chocolate
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dwdf8ffc31/svg/icon-menu-parapresentear.svg" alt="Cestas e Presentes">
+                Cestas e Presentes
+            </a>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <a href="#">
+                <img src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dwe2e61ec0/svg/icon-menu-tipodechocolate.svg" alt="Biscoito">
+                Biscoito
+            </a>
+        </li>
+        <li>
+            <a href="categoria/cafeteria">
+                <img src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dwe2e61ec0/svg/icon-menu-tipodechocolate.svg" alt="Cafeteria">
+                Cafeteria
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dw2e959305/images/link-dia-dos-pais.png" alt="Nossas Marcas">
+                Nossas Marcas
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="https://www.cacaushow.com.br/on/demandware.static/Sites-CacauShow-Site/-/default/dw2e959305/images/link-dia-dos-pais.png" alt="Clube de Assinaturas">
+                Clube de Assinaturas
+            </a>
+        </li>
+        <li>
+            <a href="#">
+
+                Festival de Trufas
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<app-logar
+  [visivel]="visivel"
+></app-logar>

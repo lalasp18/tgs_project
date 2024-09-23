@@ -1,0 +1,163 @@
+$choco-color: #6b2e0f;
+$border-color: #532e22;
+$terciario-color: #659c57;
+$text-color: #1f1f1f;
+$promo-color: #88716b;
+$line-color: #7ea077;
+
+.tela-choco {
+  padding: 3.9375rem 0;
+  background-color: #F2EAE4;
+
+  .converter-ordem {
+    .banner {
+      img {
+        border-bottom: 6px solid $terciario-color;
+        margin-bottom: 30px;
+        height: 12.1875em;
+        width: 100%;
+      }
+    }
+
+    .hero {
+      padding: 0 4%;
+
+      h1 {
+        color: $choco-color;
+        font-size: 2.1rem;
+        font-style: italic;
+        margin: 30px 0 0;
+      }
+
+      p {
+        font-size: 24px;
+        color: $text-color;
+      }
+    }
+  }
+
+  .bar-filter {
+    padding: 0 4%;
+    display: flex;
+
+    .bar-vazio {
+      width: 25%;
+    }
+
+    .grid-produtos {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(5, 1fr);
+
+      .grid-item {
+        background: transparent;
+        padding: 36px 6px 30px;
+        color: $text-color;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        width: 18.335rem;
+
+        .badge {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          padding: 8px 12px;
+          background-color: transparent;
+          border-radius: 50%;
+          color: $text-color;
+          border: .5px solid $line-color;
+
+          i.pi.pi-heart {
+            vertical-align: middle;
+          }
+        }
+
+        img {
+          display: inline-block;
+          max-height: 200px;
+          max-width: 100%;
+          text-align: center;
+          width: auto;
+        }
+
+        .label-produto {
+          text-transform: uppercase;
+        }
+
+        .label-promo {
+          text-decoration: line-through;
+          color: $promo-color;
+          font-style: italic;
+          margin-bottom: 0;
+          line-height: 0;
+        }
+
+        .label-valor {
+          font-family: 'Quicksand Bold', 'Roboto', sans-serif;
+          font-weight: bold;
+          font-size: 1.2rem;
+        }
+
+        button {
+          font-family: 'Quicksand', 'Roboto', sans-serif;
+          border: 1px solid $border-color;
+          font-size: .875em;
+          outline: none;
+          background: transparent;
+          color: $text-color;
+          min-width: 115px;
+        }
+      }
+
+      .grid-item:after {
+        content: "";
+        border-right: 1px dashed $line-color;
+        height: 80%;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .converter-ordem {
+    display: flex;
+    flex-direction: column-reverse;
+
+    h1 {
+      margin: 0 0 30px;
+    }
+
+    .banner {
+      margin-top: 1.5rem;
+      img {
+        object-fit: cover;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 1107px) {
+  .grid-produtos {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 960px) {
+  .grid-produtos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 770px) {
+  .grid-produtos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
