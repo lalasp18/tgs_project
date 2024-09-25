@@ -45,10 +45,10 @@ h2 {
 
 @media (max-width: 992px) {
   .carousel {
-    padding: 0;
+    padding: 2em 0;
 
     .carousel-item img {
-      height: 33.954375rem;
+      //height: 33.954375rem;
       object-fit: cover;
     }
   }
